@@ -40,11 +40,22 @@ export class PolarisChip extends LitElement {
 
   constructor() {
     super();
-    this.name = 'Football';
-    this.link = 'https://www.psu.edu/research/';
+    this.name = 'flu shot';
+    this.link = 'https://hr.psu.edu/news/university-reminds-employees-flu-covid-19-vaccines-resources-and-policies';
+    this.information = 'This is the information';
   }
 
   render() {
-    return html`<a class="link" href="${this.link}"><slot>${this.name}</slot></a>`;
+    return html`
+    <a class="link" href="${this.link}"><slot>${this.name}</slot></a>
+    <div class="card">
+      <h1>${this.name}</h1>
+    <div class="content">
+        ${this.information}
+        <slot></slot>
+  </div>
+  </div>
+  `;
   }
 }
+
