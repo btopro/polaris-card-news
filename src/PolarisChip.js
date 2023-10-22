@@ -26,7 +26,7 @@ export class PolarisChip extends LitElement {
         text-decoration: underline;
       }
 
-       .link {
+      .link {
         font-weight: bold;
         text-decoration: none;
         padding: 8px 4px;
@@ -37,25 +37,17 @@ export class PolarisChip extends LitElement {
     `;
   }
 
-
   constructor() {
     super();
     this.name = 'flu shot';
     this.link = 'https://hr.psu.edu/news/university-reminds-employees-flu-covid-19-vaccines-resources-and-policies';
-    this.information = 'This is the information';
   }
 
   render() {
     return html`
-    <a class="link" href="${this.link}"><slot>${this.name}</slot></a>
-    <div class="card">
-      <h1>${this.name}</h1>
-    <div class="content">
-        ${this.information}
-        <slot></slot>
-  </div>
-  </div>
-  `;
+      <a class="link" href="${this.link}">${this.name}</a>
+    `;
   }
 }
 
+customElements.define('polaris-chip', PolarisChip);
