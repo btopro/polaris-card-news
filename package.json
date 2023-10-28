@@ -15,6 +15,8 @@
     "start": "web-dev-server"
   },
   "dependencies": {
+    "@ojakanbi/date-chip": "^0.0.0",
+    "date-chip": "^0.0.0",
     "lit": "^2.0.2"
   },
   "devDependencies": {
