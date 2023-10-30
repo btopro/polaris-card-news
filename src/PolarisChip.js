@@ -16,8 +16,17 @@ export class PolarisChip extends LitElement {
   static get styles() {
     return css`
       :host {
-        display: inline-block;
-        margin: 0 12px 12px 0;
+        display: inline-flex;
+        margin: 12px;
+        max-width: 300px;
+        flex-direction: column;
+      }
+
+      :host {
+        display: inline-flex;
+        margin: 12px;
+        max-width: 450px;
+        flex-direction: column;
       }
 
       .cardcontainer {
@@ -27,7 +36,8 @@ export class PolarisChip extends LitElement {
         box-sizing: border-box;
         font-family: 'Roboto', sans-serif;
         margin-right: 10px;
-        line-height: 24px;
+        line-height: 20px;
+        gap: 0px;
       }
 
       a.chip {
@@ -43,16 +53,16 @@ export class PolarisChip extends LitElement {
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(30, 64, 124, 0.35); /* Navy blue with 35% opacity */
-        opacity: 0; /* Initially transparent */
+        background-color: rgba(30, 64, 124, 0.35); 
+        opacity: 0; 
       }
 
       a.chip:hover::before {
-        opacity: 1; /* Make the overlay fully visible on hover */
+        opacity: 1; 
       }
 
       a.chip img {
-        max-width: 300px;
+        max-width: 450px;
         height: auto;
       }
 
@@ -66,8 +76,8 @@ export class PolarisChip extends LitElement {
       .imagecontainer {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center; /* Center horizontally */
-        align-items: center; /* Center vertically */
+        justify-content: center; 
+        align-items: center; 
       }
 
       @media (max-width: 768px) {
@@ -78,13 +88,18 @@ export class PolarisChip extends LitElement {
 
       .headercontainer {
         display: flex;
-        margin-top: 20px;
-        margin-bottom: 20px;
-      }
-
+        marign-top: 0px;
+        margin-bottom: 2px;
+        margin-left: -4px;
+        margin-right: -8px;
+        align-items: center;
+        gap: 10px; 
+    }
       h3 {
-        font-size: 20.8px;
-        text-transform: capitalize;
+        margin-top: 17px;
+        font-size: 22px;
+        font-family: sans-serif;
+
       }
 
       .cardheader {
@@ -94,16 +109,19 @@ export class PolarisChip extends LitElement {
       }
 
       .descriptioncontainer {
-        padding-left: 10px;
-        padding-right: 10px;
-        padding-top: 10px;
+        padding-left: 2px;
+        padding-right: 2px;
+        padding-top: 1px;
         padding-bottom: 10px;
+        line-height: 24px;
+        margin-top: 0px;
       }
 
       .description {
+        font-family: 'Roboto', sans-serif;
         font-size: 19.2px;
-        color: black;
-      }
+        color: #000;
+    }
     `;
   }
 
@@ -119,7 +137,7 @@ export class PolarisChip extends LitElement {
   render() {
     return html`
     <div class="cardcontainer">
-    <!-- image container -->
+      <!-- image container -->
       <div class="imagecontainer">
         <a class="chip" href="${this.link}" target="_blank">
           <img src="${this.imageSrc}" alt="${this.name}">
@@ -127,7 +145,7 @@ export class PolarisChip extends LitElement {
         </a>
       </div>
       <!-- date chip / heading -->
-      </div class="headercontainer">
+      <div class="headercontainer">
         <date-chip></date-chip>
         <h3>
           <a class="cardheader" href="${this.link}" target="_blank">
