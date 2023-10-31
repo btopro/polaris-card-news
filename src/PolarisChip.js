@@ -10,6 +10,7 @@ export class PolarisChip extends LitElement {
       imageSrc: { type: String },
       header: { type: String },
       desc: { type: String },
+      date: { type: String },
     };
   }
 
@@ -88,17 +89,16 @@ export class PolarisChip extends LitElement {
 
       .headercontainer {
         display: flex;
-        marign-top: 0px;
-        margin-bottom: 2px;
-        margin-left: -4px;
-        margin-right: -8px;
-        align-items: center;
+        margin: 10px 0;
+        align-items: stretch;
         gap: 10px; 
     }
       h3 {
-        margin-top: 17px;
-        font-size: 22px;
+        font-size: 20.8px;
         font-family: sans-serif;
+        margin-block-start: 0em;
+        margin-block-end: 0em;
+        font-weight: 400;
 
       }
 
@@ -109,9 +109,9 @@ export class PolarisChip extends LitElement {
       }
 
       .descriptioncontainer {
-        padding-left: 2px;
-        padding-right: 2px;
-        padding-top: 1px;
+        padding-left: -2px;
+        padding-right: 1px;
+        padding-top: 0em;
         padding-bottom: 10px;
         line-height: 24px;
         margin-top: 0px;
@@ -121,6 +121,7 @@ export class PolarisChip extends LitElement {
         font-family: 'Roboto', sans-serif;
         font-size: 19.2px;
         color: #000;
+        font-weight: 150;
     }
     `;
   }
@@ -132,6 +133,7 @@ export class PolarisChip extends LitElement {
     this.imageSrc = '';
     this.header = '';
     this.desc = '';
+    this.date = '';
   }
 
   render() {
@@ -146,7 +148,7 @@ export class PolarisChip extends LitElement {
       </div>
       <!-- date chip / heading -->
       <div class="headercontainer">
-        <date-chip></date-chip>
+        <date-chip date="${this.date}"></date-chip>
         <h3>
           <a class="cardheader" href="${this.link}" target="_blank">
             <slot>${this.header}</slot>

@@ -27,9 +27,9 @@ export class DateChip extends LitElement {
         font-family: 'Roboto', sans-serif;
         width: 100%;
         height: 100%;
-        margin-top: 10px;
         margin-right: 10px;
-        marin-bottom: 6px;
+        margin-top: 0em;
+        margin-left: -6px;
         line-height: 24px;
         text-align: center;
       }
