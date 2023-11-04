@@ -2,8 +2,18 @@ import { LitElement, html, css } from 'lit';
 
 export class DateChip extends LitElement {
 
-  static get properties() {
+  constructor() {
+    super();
+    this.date = null;
+    this.month = null;
+    this.day = null;
+  }
 
+  static get tag() {
+    return "date-chip";
+  }
+
+  static get properties() {
     return {
       date: { type: String },
       month: { type: String },
@@ -12,9 +22,7 @@ export class DateChip extends LitElement {
   }
 
   static get styles() {
-
     return css`
-
       :host {
         display: block;
       }
@@ -75,12 +83,11 @@ export class DateChip extends LitElement {
     `;
   }
 
-
-  constructor() {
-    super();
-    this.date = '01/01/2001'
-    this.month = 'Jan';
-    this.day = 1;
+  updated(changedProperties) {
+    if (changedProperties.has('date')) {
+      this.dateToMonth();
+      this.dateToDay();
+    }
   }
 
 
@@ -96,11 +103,7 @@ export class DateChip extends LitElement {
   }
 
   render() {
-
-    this.dateToMonth();
-    this.dateToDay();
     return html`
-
     <div class="container">
       <span class="month">${this.month}</span>
       <span class="day">${this.day}</span>
@@ -109,4 +112,4 @@ export class DateChip extends LitElement {
   }
 }
 
-customElements.define('date-chip', DateChip);
+customElements.define(DateChip.tag, DateChip);

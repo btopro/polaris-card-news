@@ -1,8 +1,8 @@
 {
-  "name": "polaris-chip",
-  "description": "Webcomponent polaris-chip following open-wc recommendations",
+  "name": "polaris-card-news",
+  "description": "Webcomponent polaris-card-news following open-wc recommendations",
   "license": "MIT",
-  "author": "polaris-chip",
+  "author": "polaris-card-news",
   "version": "0.0.0",
   "scripts": {
     "test": "web-test-runner --coverage",

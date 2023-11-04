@@ -1,14 +1,22 @@
 import { LitElement, html, css } from 'lit';
 import "./date-chip.js";
 
-export class PolarisChip extends LitElement {
+export class PolarisCardNews extends LitElement {
+
+  constructor() {
+    super();
+    this.title = '';
+    this.link = '';
+    this.image = '';
+    this.desc = '';
+    this.date = '';
+  }
+
   static get properties() {
     return {
-      name: { type: String },
+      title: { type: String },
       link: { type: String },
-      active: { type: Boolean, reflect: true },
-      imageSrc: { type: String },
-      header: { type: String },
+      image: { type: String },
       desc: { type: String },
       date: { type: String },
     };
@@ -16,13 +24,6 @@ export class PolarisChip extends LitElement {
 
   static get styles() {
     return css`
-      :host {
-        display: inline-flex;
-        margin: 12px;
-        max-width: 300px;
-        flex-direction: column;
-      }
-
       :host {
         display: inline-flex;
         margin: 12px;
@@ -41,13 +42,13 @@ export class PolarisChip extends LitElement {
         gap: 0px;
       }
 
-      a.chip {
+      .image-link {
         position: relative;
         display: block;
         cursor: pointer;
       }
 
-      a.chip::before {
+      .image-link::before {
         content: '';
         position: absolute;
         top: 0;
@@ -58,16 +59,16 @@ export class PolarisChip extends LitElement {
         opacity: 0; 
       }
 
-      a.chip:hover::before {
+      .image-link:hover::before {
         opacity: 1; 
       }
 
-      a.chip img {
+      .image-link img {
         max-width: 450px;
         height: auto;
       }
 
-      a.chip {
+      .image-link {
         font-weight: bold;
         text-decoration: none;
         padding: 0px 0px;
@@ -81,18 +82,13 @@ export class PolarisChip extends LitElement {
         align-items: center; 
       }
 
-      @media (max-width: 768px) {
-        .cardcontainer {
-          flex-direction: column;
-        }
-      }
-
       .headercontainer {
         display: flex;
         margin: 10px 0;
         align-items: stretch;
         gap: 10px; 
-    }
+      }
+
       h3 {
         font-size: 20.8px;
         font-family: sans-serif;
@@ -122,18 +118,13 @@ export class PolarisChip extends LitElement {
         font-size: 19.2px;
         color: #000;
         font-weight: 150;
-    }
+      }
+      @media (max-width: 768px) {
+        .cardcontainer {
+          flex-direction: column;
+        }
+      }
     `;
-  }
-
-  constructor() {
-    super();
-    this.name = '';
-    this.link = '';
-    this.imageSrc = '';
-    this.header = '';
-    this.desc = '';
-    this.date = '';
   }
 
   render() {
@@ -141,19 +132,18 @@ export class PolarisChip extends LitElement {
     <div class="cardcontainer">
       <!-- image container -->
       <div class="imagecontainer">
-        <a class="chip" href="${this.link}" target="_blank">
-          <img src="${this.imageSrc}" alt="${this.name}">
-          <slot>${this.name}</slot>
+        <a class="image-link" href="${this.link}">
+          <img src="${this.image}" alt="" />
         </a>
       </div>
       <!-- date chip / heading -->
       <div class="headercontainer">
         <date-chip date="${this.date}"></date-chip>
-        <h3>
-          <a class="cardheader" href="${this.link}" target="_blank">
-            <slot>${this.header}</slot>
-          </a> 
-        </h3>
+        <a class="cardheader" href="${this.link}">
+          <h3>
+            <slot name="header">${this.title}</slot>
+          </h3>
+        </a> 
       </div>
       <!-- desc -->
       <div class="descriptioncontainer">
